@@ -67,7 +67,7 @@ curl -X POST http://localhost:8080/partners \
 
 ## 架构总览
 
-我们采用 **DDD Lite**：保留 DDD 的核心价值（充血模型、分层、领域边界），砍掉让 AI 和人都犯迷糊的抽象（聚合根直接用 `Entity`，不造 `Aggregate`）。
+我们采用 **DDD Lite**：一个**单体优先（Modular Monolith）**的模块化架构，保留 DDD 的核心价值（充血模型、分层、领域边界），砍掉让 AI 和人都犯迷糊的抽象（聚合根直接用 `Entity`，不造 `Aggregate`）。**与微服务正交**——它管"一个进程内代码怎么写"，可嵌套进任意架构组合。
 
 ```mermaid
 flowchart TB
@@ -137,12 +137,12 @@ flowchart LR
 |------|------|------|
 | [AI 开发手册](docs/AI开发手册.md) | **通用开发规范实操版**：分层、命名、职责边界、质量门禁、事件驱动、审查清单 | 开发者 / AI 助手 |
 | [AI 开发规范方法论](docs/AI开发规范方法论.md) | 为什么 AI 写不好代码、我们的解法是什么 | 决策者 / 推广对象 |
-| [架构优势](docs/架构优势.md) | DDD Lite 架构的设计与真实收益 | 决策者 / 推广对象 |
+| [架构说明](docs/架构说明.md) | DDD Lite 是什么、vs 传统 MVC / 经典 DDD、优缺点、与微服务如何组合 | 决策者 / 开发者 |
 | [scaffold/](scaffold/) | 可直接运行的最小骨架（`mvn spring-boot:run` 一键启动，H2/MySQL 双库，7 个 Spock 测试通过） | 开发者 |
 | [scaffold/README.md](scaffold/README.md) | 启动方式、连 MySQL、新建业务模块的完整步骤 | 开发者 |
 | [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |
 
-> **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构优势](docs/架构优势.md) 是「结果」（真实成效）。
+> **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构说明](docs/架构说明.md) 是「对比与边界」（vs 传统 MVC / 经典 DDD，以及和微服务的关系）。
 
 ---
 
