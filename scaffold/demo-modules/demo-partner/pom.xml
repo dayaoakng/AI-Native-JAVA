@@ -40,6 +40,19 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- 运行时数据库（H2 内存库，MySQL 兼容）：开箱即启动，无需安装数据库 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 连接真实 MySQL（mysql profile） -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,6 +99,13 @@
                         <include>**/*Spec.java</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <!-- 打可执行 fat-jar + 提供 spring-boot:run（版本必须显式锁定：本工程父 pom 只 import
+                 spring-boot-dependencies 的依赖管理，不含 pluginManagement，不锁版本会漂到 latest） -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>

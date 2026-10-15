@@ -102,7 +102,7 @@ flowchart LR
 | [AI 开发手册](docs/AI开发手册.md) | **通用开发规范实操版**：分层、命名、职责边界、质量门禁、事件驱动、审查清单 | 开发者 / AI 助手 |
 | [AI 开发规范方法论](docs/AI开发规范方法论.md) | 为什么 AI 写不好代码、我们的解法是什么 | 决策者 / 推广对象 |
 | [架构优势](docs/架构优势.md) | DDD Lite 架构的设计与真实收益 | 决策者 / 推广对象 |
-| [scaffold/](scaffold/) | 可直接编译的最小骨架（编译 + 7 个 Spock 测试通过，含 Port/事件示例） | 开发者 |
+| [scaffold/](scaffold/) | 可直接运行的最小骨架（`mvn spring-boot:run` 一键启动，7 个 Spock 测试通过，含事件示例） | 开发者 |
 | [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |
 
 > **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构优势](docs/架构优势.md) 是「结果」（真实成效）。
