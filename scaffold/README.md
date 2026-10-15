@@ -84,12 +84,12 @@ mvn test -pl demo-modules/demo-partner -am
 mvn spring-boot:run -Dspring-boot.run.profiles=mysql
 ```
 
-- 连接参数在 `application-mysql.yml`，已用环境变量占位（有默认值）：
+- 连接参数在 `application-mysql.yml`，已用环境变量占位：
   - `MYSQL_HOST`（默认 localhost）· `MYSQL_PORT`（默认 3306）
   - `MYSQL_DATABASE`（默认 ddd_lite，**不存在会自动创建**）
-  - `MYSQL_USER`（默认 root）· `MYSQL_PASSWORD`（默认 123456）
+  - `MYSQL_USER`（默认 root）· `MYSQL_PASSWORD`（**无默认值，启动前必须设置**）
 - 建表走 `schema-mysql.sql`：`CREATE TABLE IF NOT EXISTS`，**绝不 DROP**，每次启动幂等、不清空业务数据。
-- 覆盖任意项：`-DMYSQL_PASSWORD=xxx` 或设置环境变量，**不要把真实密码写进仓库**（模板默认值仅演示用）。
+- 覆盖任意项：`-DMYSQL_PASSWORD=xxx` 或设置环境变量，**不要把真实密码写进仓库**。
 
 ## 合规自查
 
