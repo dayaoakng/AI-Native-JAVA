@@ -1,0 +1,25 @@
+---
+description: DDD Lite 硬规则与决策树（AI 写码查表）
+alwaysApply: true
+---
+
+# DDD Lite 规则
+
+写 Java 代码前逐项自查，违反即不合格：
+
+1. 禁止新增 `service/` 包、`XxxService`、`XxxApplicationService`
+2. 1 用例 = 1 Handler，Handler ≤ 100 行
+3. 单文件 ≤ 300 行；方法 ≤ 30 行
+4. 领域实体放 `domain/entity/`；domain 层仅 entity/valueobject/repository/event/port
+5. 源码 UTF-8 无 BOM
+
+代码放哪（直接查表，不猜）：
+
+- 领域规则（状态校验/变更、业务计算、不变量）→ `domain/entity/`、`domain/valueobject/`
+- 用例编排（加载实体、调仓储、跨实体协作、事务、发事件）→ `application/handler/`（1 用例 1 Handler）
+- 事件监听（消费领域事件）→ `application/listener/`
+- 持久化抽象 → 接口 `domain/repository/`；实现 `infrastructure/`
+- 跨模块/外部系统能力 → 契约 `domain/port/` ＋ 实现 `infrastructure/`
+- 跨模块通知 → `domain/event/`（发布）＋ 对方 `@EventListener`（消费）
+
+写完自检：`python scripts/standards/scan-compliance.py --root scaffold`，必须 0 fail。

@@ -13,11 +13,15 @@ scaffold/
     ├── pom.xml                     # 业务模块聚合
     └── demo-partner/               # 示例模块：Partner 完整用例
         ├── interfaces/             # controller / request / response
-        ├── application/            # handler / assembler
-        ├── domain/                 # entity / repository / event
+        ├── application/            # handler / assembler / listener（事件监听）
+        ├── domain/                 # entity / valueobject / repository / event
         ├── infrastructure/         # mapper / persistence/repository
         └── src/test/groovy/        # Spock 单元测试
 ```
+
+> 本目录自带 `AGENTS.md`（DDD Lite 规则），AI 编程助手复制后自动生效。
+> 跨模块协作示例：`ActivatePartnerHandler` 发布 `PartnerStatusChangedEvent`，
+> `PartnerStatusListener` 用 `@EventListener` 消费（支柱 4：跨模块走事件）。
 
 ## 技术栈（与 BOSS 对齐）
 
@@ -51,3 +55,12 @@ mvn clean install -DskipTests
 # 单模块测试
 mvn test -pl demo-modules/demo-partner -am
 ```
+
+## 合规自查
+
+```bash
+# 在仓库根目录运行（扫描 scaffold/）
+python scripts/standards/scan-compliance.py --root scaffold
+```
+
+输出 `0 条 fail` 即合规。CI（`.github/workflows/ci.yml`）与 pre-commit hook（`.githooks/`）会自动执行同一扫描。

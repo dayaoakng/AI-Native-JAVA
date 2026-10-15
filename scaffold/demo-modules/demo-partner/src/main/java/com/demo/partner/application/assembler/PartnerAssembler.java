@@ -20,6 +20,7 @@ public final class PartnerAssembler {
         response.setCode(partner.getCode());
         response.setName(partner.getName());
         response.setStatus(partner.getStatus());
+        response.setStatusDesc(partner.status().getDesc());
         return response;
     }
 }

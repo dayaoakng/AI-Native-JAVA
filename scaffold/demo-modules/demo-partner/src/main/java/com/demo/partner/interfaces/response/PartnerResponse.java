@@ -12,4 +12,5 @@ public class PartnerResponse {
     private String code;
     private String name;
     private Integer status;
+    private String statusDesc;
 }

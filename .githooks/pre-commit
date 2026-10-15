@@ -1,0 +1,20 @@
+#!/bin/sh
+# DDD Lite 合规检查（本地便捷门禁；CI 才是硬门禁）
+# 安装：git config core.hooksPath .githooks
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+PY=""
+for c in python3 python; do
+  if command -v "$c" >/dev/null 2>&1; then
+    PY="$c"
+    break
+  fi
+done
+
+if [ -z "$PY" ]; then
+  echo "[pre-commit] 未找到 python，跳过合规扫描（CI 仍会检查）" >&2
+  exit 0
+fi
+
+exec "$PY" "$ROOT/scripts/standards/scan-compliance.py" --root "$ROOT/scaffold"

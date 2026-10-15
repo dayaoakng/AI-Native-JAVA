@@ -36,8 +36,8 @@
 
 规则如果不能自动检查，就只是口号。我们的每条硬规则都对应了**机器检查手段**：
 
-- 命名/行数/BOM/`service/` 违规 → **pre-commit hook 自动拦截**
-- 合规扫描 → `scripts/standards/scan-compliance.py` 一键出报告
+- 命名/行数/BOM/`service/` 违规 → **pre-commit hook + CI 双门禁自动拦截**
+- 合规扫描 → `scripts/standards/scan-compliance.py` 一键出报告（本仓库已内置，纯标准库、零依赖）
 - 假 Handler / 僵尸 Handler → 静态扫描识别并登记技术债务
 
 **这正是「AI 开发」和「人肉开发」的本质区别**：人的规范靠自觉，AI 的规范靠**可执行的门禁**。
@@ -117,5 +117,7 @@
 ## 六、你可以怎么用
 
 1. 看 [架构优势](架构优势.md) 了解这套规范落在一个真实系统上的效果。
-2. 拿 `scaffold/` 直接 `mvn clean install` 跑一遍，看最小样例长什么样。
-3. 把这套规则移植到你的团队——它不绑定语言细节，核心是「硬规则 + 决策树 + 自动检查」三件套。
+2. 把 `AGENTS.md` / `.cursor/rules/ddd-lite.mdc` 复制进你的项目，AI 编程助手立即按规则执行。
+3. 拿 `scaffold/` 直接 `mvn clean install` 跑一遍，看最小样例长什么样。
+4. 跑 `python scripts/standards/scan-compliance.py --root scaffold`，看这套规则如何被机器检查。
+5. 把这套规则移植到你的团队——它不绑定语言细节，核心是「硬规则 + 决策树 + 自动检查」三件套。

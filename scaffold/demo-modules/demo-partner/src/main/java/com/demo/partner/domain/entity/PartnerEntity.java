@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.demo.framework.exception.BusinessException;
 import com.demo.framework.result.ResultCode;
+import com.demo.partner.domain.valueobject.PartnerStatus;
 import com.demo.shared.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,33 +43,37 @@ public class PartnerEntity extends BaseEntity {
         PartnerEntity partner = new PartnerEntity();
         partner.code = code.trim();
         partner.name = name.trim();
-        partner.status = 0;
+        partner.status = PartnerStatus.INACTIVE.getCode();
         return partner;
     }
 
     // ==================== 状态转换方法 ====================
 
     public void activate() {
-        if (this.status != null && this.status == 1) {
+        if (status() == PartnerStatus.ACTIVE) {
             throw new BusinessException(ResultCode.BUSINESS_ERROR, "伙伴已激活，无法重复激活");
         }
-        this.status = 1;
+        this.status = PartnerStatus.ACTIVE.getCode();
     }
 
     public void freeze() {
-        if (this.status != null && this.status == 2) {
+        if (status() == PartnerStatus.FROZEN) {
             throw new BusinessException(ResultCode.BUSINESS_ERROR, "伙伴已冻结");
         }
-        this.status = 2;
+        this.status = PartnerStatus.FROZEN.getCode();
     }
 
     // ==================== 业务判断方法 ====================
 
+    public PartnerStatus status() {
+        return PartnerStatus.of(this.status);
+    }
+
     public boolean isActive() {
-        return this.status != null && this.status == 1;
+        return status() == PartnerStatus.ACTIVE;
     }
 
     public boolean isFrozen() {
-        return this.status != null && this.status == 2;
+        return status() == PartnerStatus.FROZEN;
     }
 }

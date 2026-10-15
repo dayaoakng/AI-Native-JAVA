@@ -8,6 +8,8 @@
   <a href="#"><img src="https://img.shields.io/badge/MyBatis--Plus-3.5.2-blue" alt="MyBatis-Plus"></a>
   <a href="#"><img src="https://img.shields.io/badge/测试-Spock%202.3-brightgreen" alt="Spock"></a>
   <a href="#"><img src="https://img.shields.io/badge/状态-生产验证-success" alt="生产验证"></a>
+  <a href="#"><img src="https://img.shields.io/badge/门禁-pre--commit%20%2B%20CI-green" alt="门禁"></a>
+  <a href="#"><img src="https://img.shields.io/badge/规则-AI%20可执行-blueviolet" alt="AI 可执行"></a>
 </p>
 
 ---
@@ -83,7 +85,7 @@ flowchart LR
 |--------|------|
 | **① 硬规则** | 禁止 `service/`；文件 ≤ 300 行、Handler ≤ 100 行、方法 ≤ 30 行；实体必须进 `domain/entity/` |
 | **② 决策树** | 「这段代码是领域规则？→ 写 Entity；是用例编排？→ 写 Handler；是持久化？→ 写 infrastructure」 |
-| **③ 自动检查** | pre-commit hook 拦截命名/行数/BOM 违规；合规扫描脚本一键出报告 |
+| **③ 自动检查** | 合规扫描 `scripts/standards/scan-compliance.py` 一键出报告；pre-commit hook（`.githooks/`）+ GitHub Action（`.github/workflows/ci.yml`）双门禁拦截违规 |
 
 ## 三个关键数字（来自生产系统实测）
 
@@ -95,9 +97,15 @@ flowchart LR
 
 ## 文档导航
 
-- [AI 开发规范方法论](docs/AI开发规范方法论.md) —— 为什么 AI 写不好代码、我们的解法是什么
-- [架构优势](docs/架构优势.md) —— DDD Lite 架构的设计与真实收益
-- [scaffold/](scaffold/) —— 可直接运行的最小骨架（编译 + 5 个 Spock 测试通过）
+| 文档 | 内容 | 读者 |
+|------|------|------|
+| [AI 开发手册](docs/AI开发手册.md) | **通用开发规范实操版**：分层、命名、职责边界、质量门禁、事件驱动、审查清单 | 开发者 / AI 助手 |
+| [AI 开发规范方法论](docs/AI开发规范方法论.md) | 为什么 AI 写不好代码、我们的解法是什么 | 决策者 / 推广对象 |
+| [架构优势](docs/架构优势.md) | DDD Lite 架构的设计与真实收益 | 决策者 / 推广对象 |
+| [scaffold/](scaffold/) | 可直接编译的最小骨架（编译 + 7 个 Spock 测试通过，含 Port/事件示例） | 开发者 |
+| [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |
+
+> **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构优势](docs/架构优势.md) 是「结果」（真实成效）。
 
 ---
 

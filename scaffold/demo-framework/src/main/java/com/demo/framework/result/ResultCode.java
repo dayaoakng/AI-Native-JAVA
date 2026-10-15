@@ -14,6 +14,8 @@ public enum ResultCode {
     FORBIDDEN("403", "无权限访问"),
     NOT_FOUND("404", "资源不存在"),
 
+    PARTNER_STATUS_INVALID("610", "伙伴状态非法"),
+
     BUSINESS_ERROR("600", "业务处理失败"),
     SYSTEM_ERROR("601", "系统繁忙，请稍后重试"),
     DATA_NOT_FOUND("602", "数据不存在"),
