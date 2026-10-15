@@ -25,9 +25,9 @@ scaffold/
 
 ## 技术栈（与 BOSS 对齐）
 
-Java 17 · Spring Boot 2.7.18 · MyBatis-Plus 3.5.2 · H2（默认）/ MySQL 8（profile）· Spock 2.3 + Groovy 3.0 · Lombok
+Java 17 · Spring Boot 2.7.18 · MyBatis-Plus 3.5.2 · H2（默认，开箱启动）/ MySQL 8（profile）· Spock 2.3 + Groovy 3.0 · Lombok
 
-> JDK 8 版本见 `main` 分支（本分支为 `jdk17`）。
+> **本分支（`jdk17`）用 JDK 17**。需要 JDK 8 请看 `main` 分支。
 
 ## 硬约束（写代码前逐项自查）
 

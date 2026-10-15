@@ -3,7 +3,7 @@
 一套让 AI 能稳定写出可维护、可交接、可落地的企业级 Java 后端的方法论。
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Java-1.8-007396?logo=java&logoColor=white" alt="Java 8"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Java-8%20%2F%2017-007396?logo=java&logoColor=white" alt="Java 8 / 17"></a>
   <a href="#"><img src="https://img.shields.io/badge/Spring%20Boot-2.7.18-6DB33F?logo=springboot&logoColor=white" alt="Spring Boot 2.7.18"></a>
   <a href="#"><img src="https://img.shields.io/badge/MyBatis--Plus-3.5.2-blue" alt="MyBatis-Plus"></a>
   <a href="#"><img src="https://img.shields.io/badge/测试-Spock%202.3-brightgreen" alt="Spock"></a>
@@ -16,11 +16,47 @@
 
 ## 目录
 
+- [快速开始](#快速开始)
 - [一句话看懂](#一句话看懂)
 - [架构总览](#架构总览)
 - [方法论：三件套](#方法论三件套)
 - [三个关键数字](#三个关键数字)
 - [文档导航](#文档导航)
+
+---
+
+## 快速开始
+
+两个分支，按你的 JDK 环境选一个：
+
+| 分支 | JDK | 说明 |
+|------|-----|------|
+| [`main`](https://github.com/dayaoakng/-AI-Native-JAVA/tree/main) | **JDK 8** | 与生产系统 BOSS 完全对齐 |
+| [`jdk17`](https://github.com/dayaoakng/-AI-Native-JAVA/tree/jdk17) | **JDK 17** | 开箱可启动（H2 / MySQL），CI 自动适配 |
+
+```bash
+# 克隆（默认 main 分支，JDK 8）
+git clone https://github.com/dayaoakng/-AI-Native-JAVA.git
+
+# 或直接拿 JDK 17 可启动分支
+git clone -b jdk17 https://github.com/dayaoakng/-AI-Native-JAVA.git
+
+# 编译 + 测试（两个分支通用，scaffold 目录下）
+cd -AI-Native-JAVA/scaffold
+mvn test
+
+# 启动服务（仅 jdk17 分支，内置 H2 内存库，无需装数据库）
+cd demo-modules/demo-partner
+mvn spring-boot:run
+
+# 验证接口
+curl -X POST http://localhost:8080/partners \
+  -H "Content-Type: application/json" \
+  -d '{"code":"P001","name":"测试伙伴"}'
+# → {"code":"200","data":{"id":1,"status":0,"statusDesc":"未激活"},...}
+```
+
+> 完整启动方式、连本地 MySQL 的方法见 [scaffold/README.md](scaffold/README.md)。
 
 ---
 
@@ -102,7 +138,8 @@ flowchart LR
 | [AI 开发手册](docs/AI开发手册.md) | **通用开发规范实操版**：分层、命名、职责边界、质量门禁、事件驱动、审查清单 | 开发者 / AI 助手 |
 | [AI 开发规范方法论](docs/AI开发规范方法论.md) | 为什么 AI 写不好代码、我们的解法是什么 | 决策者 / 推广对象 |
 | [架构优势](docs/架构优势.md) | DDD Lite 架构的设计与真实收益 | 决策者 / 推广对象 |
-| [scaffold/](scaffold/) | 可直接运行的最小骨架（`mvn spring-boot:run` 一键启动，7 个 Spock 测试通过，含事件示例） | 开发者 |
+| [scaffold/](scaffold/) | 可直接运行的最小骨架（`mvn spring-boot:run` 一键启动，H2/MySQL 双库，7 个 Spock 测试通过） | 开发者 |
+| [scaffold/README.md](scaffold/README.md) | 启动方式、连 MySQL、新建业务模块的完整步骤 | 开发者 |
 | [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |
 
 > **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构优势](docs/架构优势.md) 是「结果」（真实成效）。
