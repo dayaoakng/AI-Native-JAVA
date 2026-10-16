@@ -116,7 +116,7 @@
 
 ## 六、你可以怎么用
 
-1. 看 [架构优势](架构优势.md) 了解这套规范落在一个真实系统上的效果。
+1. 看 [架构说明](架构说明.md) 了解这套规范是什么、与传统 MVC / 经典 DDD 的对比、以及它如何与微服务组合。
 2. 把 `AGENTS.md` / `.cursor/rules/ddd-lite.mdc` 复制进你的项目，AI 编程助手立即按规则执行。
 3. 拿 `scaffold/` 直接 `mvn clean install` 跑一遍，看最小样例长什么样。
 4. 跑 `python scripts/standards/scan-compliance.py --root scaffold`，看这套规则如何被机器检查。

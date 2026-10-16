@@ -14,14 +14,15 @@ scaffold/
     └── demo-partner/               # 示例模块：Partner 完整用例
         ├── interfaces/             # controller / request / response
         ├── application/            # handler / assembler / listener（事件监听）
-        ├── domain/                 # entity / valueobject / repository / event
-        ├── infrastructure/         # mapper / persistence/repository
+        ├── domain/                 # entity / valueobject / repository / event / port
+        ├── infrastructure/         # mapper / persistence/repository / port
         └── src/test/groovy/        # Spock 单元测试
 ```
 
 > 本目录自带 `AGENTS.md`（DDD Lite 规则），AI 编程助手复制后自动生效。
-> 跨模块协作示例：`ActivatePartnerHandler` 发布 `PartnerStatusChangedEvent`，
-> `PartnerStatusListener` 用 `@EventListener` 消费（支柱 4：跨模块走事件）。
+> 跨模块协作两个示例：
+> ① 异步事件：`ActivatePartnerHandler` 发布 `PartnerStatusChangedEvent`，`PartnerStatusListener` 用 `@EventListener` 消费；
+> ② 同步 Port：`PartnerCreditPort`（domain 契约）+ `PartnerCreditPortImpl`（infrastructure 实现），Handler 经 Port 跨模块查询。
 
 ## 技术栈（与 BOSS 对齐）
 
@@ -84,12 +85,12 @@ mvn test -pl demo-modules/demo-partner -am
 mvn spring-boot:run -Dspring-boot.run.profiles=mysql
 ```
 
-- 连接参数在 `application-mysql.yml`，已用环境变量占位（有默认值）：
+- 连接参数在 `application-mysql.yml`，已用环境变量占位：
   - `MYSQL_HOST`（默认 localhost）· `MYSQL_PORT`（默认 3306）
   - `MYSQL_DATABASE`（默认 ddd_lite，**不存在会自动创建**）
-  - `MYSQL_USER`（默认 root）· `MYSQL_PASSWORD`（默认 123456）
+  - `MYSQL_USER`（默认 root）· `MYSQL_PASSWORD`（**无默认值，启动前必须设置**）
 - 建表走 `schema-mysql.sql`：`CREATE TABLE IF NOT EXISTS`，**绝不 DROP**，每次启动幂等、不清空业务数据。
-- 覆盖任意项：`-DMYSQL_PASSWORD=xxx` 或设置环境变量，**不要把真实密码写进仓库**（模板默认值仅演示用）。
+- 覆盖任意项：`-DMYSQL_PASSWORD=xxx` 或设置环境变量，**不要把真实密码写进仓库**。
 
 ## 合规自查
 

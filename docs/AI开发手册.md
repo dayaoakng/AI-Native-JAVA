@@ -347,4 +347,4 @@ public class CommissionListener {
 
 ---
 
-**配套**：[方法论（为什么）](AI开发规范方法论.md) · [架构优势](架构优势.md) · [可运行骨架](../scaffold/) · [AI 规则入口](../AGENTS.md)
+**配套**：[方法论（为什么）](AI开发规范方法论.md) · [架构说明](架构说明.md) · [可运行骨架](../scaffold/) · [AI 规则入口](../AGENTS.md)
