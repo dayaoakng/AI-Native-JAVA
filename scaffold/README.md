@@ -26,9 +26,9 @@ scaffold/
 
 ## 技术栈（与 BOSS 对齐）
 
-Java 17 · Spring Boot 2.7.18 · MyBatis-Plus 3.5.2 · H2（默认，开箱启动）/ MySQL 8（profile）· Spock 2.3 + Groovy 3.0 · Lombok
+Java 8 · Spring Boot 2.7.18 · MyBatis-Plus 3.5.2 · H2（默认，开箱启动）/ MySQL 8（profile）· Spock 2.3 + Groovy 3.0 · Lombok
 
-> **本分支（`jdk17`）用 JDK 17**。需要 JDK 8 请看 `main` 分支。
+> **本分支（`main`）用 JDK 8**。需要 JDK 17 请看 `jdk17` 分支。
 
 ## 硬约束（写代码前逐项自查）
 
@@ -51,7 +51,7 @@ Java 17 · Spring Boot 2.7.18 · MyBatis-Plus 3.5.2 · H2（默认，开箱启�
 
 ## 运行
 
-> 前置：JDK 17 + Maven 3.6+。无需安装任何数据库（H2 内存库，MySQL 兼容模式）。
+> 前置：JDK 8 + Maven 3.6+。无需安装任何数据库（H2 内存库，MySQL 兼容模式）。
 
 ```bash
 # 1. 安装到本地仓库（首次必须，让 spring-boot:run 能解析 demo-framework/demo-shared）
