@@ -126,13 +126,16 @@ flowchart LR
 | **② 决策树** | 「这段代码是领域规则？→ 写 Entity；是用例编排？→ 写 Handler；是持久化？→ 写 infrastructure」 |
 | **③ 自动检查** | 合规扫描 `scripts/standards/scan-compliance.py` 一键出报告；pre-commit hook（`.githooks/`）+ GitHub Action（`.github/workflows/ci.yml`）双门禁拦截违规 |
 
-## 三个关键数字（来自生产系统实测）
+## 三个关键数字
 
-| 指标 | 数值 | 说明 |
-|------|------|------|
-| 业务模块 Handler | **462 个** | 1 用例 = 1 Handler，全程可追踪 |
-| 假 Handler / 遗留 Service / DomainService / Aggregate | **全部为 0** | 反模式被规则彻底挡住 |
-| Controller 直调 Handler（口径 A） | **近 100%** | 没有「假分层」，每一层都真的在工作 |
+| 指标 | 本仓库 scaffold 实测 | 生产系统（BOSS） |
+|------|---------------------|-----------------|
+| 业务模块 Handler | 2 个 | **462 个** |
+| 假 Handler / 遗留 Service / DomainService / Aggregate | **0** | **全部为 0** |
+| Controller 直调 Handler | **100%**（1/1） | **近 100%** |
+
+> 口径可复算：`python scripts/standards/metrics.py --root scaffold`（对任何 DDD Lite 仓库都能跑出一份同样口径的报告）。
+> 生产系统（BOSS）数据为内部实测，其源码未开源；本仓库以 `scaffold/` 作为最小可复现样本。
 
 ## 文档导航
 
@@ -141,6 +144,7 @@ flowchart LR
 | [AI 开发手册](docs/AI开发手册.md) | **通用开发规范实操版**：分层、命名、职责边界、质量门禁、事件驱动、审查清单 | 开发者 / AI 助手 |
 | [AI 开发规范方法论](docs/AI开发规范方法论.md) | 为什么 AI 写不好代码、我们的解法是什么 | 决策者 / 推广对象 |
 | [架构说明](docs/架构说明.md) | DDD Lite 是什么、vs 传统 MVC / 经典 DDD、优缺点、与微服务如何组合 | 决策者 / 开发者 |
+| [README (English)](README.en.md) | 本 README 的英文版 | 海外开发者 |
 | [scaffold/](scaffold/) | 可直接运行的最小骨架（`mvn spring-boot:run` 一键启动，H2/MySQL 双库，7 个 Spock 测试通过） | 开发者 |
 | [scaffold/README.md](scaffold/README.md) | 启动方式、连 MySQL、新建业务模块的完整步骤 | 开发者 |
 | [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |

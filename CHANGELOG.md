@@ -11,7 +11,8 @@
 - 开箱即启动：启动类 + H2 内存库（默认）/ MySQL（`mysql` profile）
 - 跨模块同步调用示例：`PartnerCreditPort` + `PartnerCreditPortImpl`
 - CI 按分支自动选择 JDK（8 / 17）
-- `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`CHANGELOG.md`
+- `CONTRIBUTING.md`、`CODE_OF_CONDUCT.md`、`CHANGELOG.md`、`README.en.md`
+- 指标统计脚本 `scripts/standards/metrics.py`（生产数字口径可复算）
 
 ### Changed
 - `docs/架构优势.md` 重构为 `docs/架构说明.md`（单体定位、MVC/DDD 对比、组合边界）
