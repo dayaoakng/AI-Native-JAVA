@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, 'jdk*']
   pull_request:
 
 jobs:
@@ -11,11 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK 8
+      # 按分支选择 JDK：jdk* 分支用 17，其余用 8
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "8"
+          java-version: ${{ contains(github.ref_name, 'jdk') && '17' || '8' }}
 
       - name: Build & test
         working-directory: scaffold

@@ -1,9 +1,11 @@
 # AI 开发规范 × DDD Lite 架构方法论
 
-一套让 AI 能稳定写出可维护、可交接、可落地的企业级 Java 后端的方法论。
+一套让 AI 能稳定写出可维护、可交接、可落地的企业级 Java 后端的方法论。单体优先（Modular Monolith）、与微服务正交、开箱即用。
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Java-1.8-007396?logo=java&logoColor=white" alt="Java 8"></a>
+  <a href="https://github.com/dayaoakng/AI-Native-JAVA/actions"><img src="https://img.shields.io/github/actions/workflow/status/dayaoakng/AI-Native-JAVA/ci.yml?branch=main&logo=github" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/dayaoakng/AI-Native-JAVA" alt="License"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Java-8%20%2F%2017-007396?logo=java&logoColor=white" alt="Java 8 / 17"></a>
   <a href="#"><img src="https://img.shields.io/badge/Spring%20Boot-2.7.18-6DB33F?logo=springboot&logoColor=white" alt="Spring Boot 2.7.18"></a>
   <a href="#"><img src="https://img.shields.io/badge/MyBatis--Plus-3.5.2-blue" alt="MyBatis-Plus"></a>
   <a href="#"><img src="https://img.shields.io/badge/测试-Spock%202.3-brightgreen" alt="Spock"></a>
@@ -22,6 +24,7 @@
 - [方法论：三件套](#方法论三件套)
 - [三个关键数字](#三个关键数字)
 - [文档导航](#文档导航)
+- [贡献](#贡献)
 
 ---
 
@@ -143,6 +146,12 @@ flowchart LR
 | [AGENTS.md](AGENTS.md) | 喂给 AI 编程助手的规则入口（Claude Code / Cursor 通用） | AI 助手 |
 
 > **文档关系**：[AI 开发手册](docs/AI开发手册.md) 是「怎么做」（实操规范），[AI 开发规范方法论](docs/AI开发规范方法论.md) 是「为什么」（价值与方法论），[架构说明](docs/架构说明.md) 是「对比与边界」（vs 传统 MVC / 经典 DDD，以及和微服务的关系）。
+
+---
+
+## 贡献
+
+欢迎提 Issue 与 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)；行为规范见 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)；变更记录见 [CHANGELOG.md](CHANGELOG.md)。
 
 ---
 

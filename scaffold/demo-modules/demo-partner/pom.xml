@@ -99,11 +99,10 @@
                     </includes>
                 </configuration>
             </plugin>
-            <!-- 打可执行 fat-jar + 提供 spring-boot:run（版本必须显式锁定，避免漂移） -->
+            <!-- 打可执行 fat-jar + 提供 spring-boot:run（版本由父 pom pluginManagement 统一锁定） -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>

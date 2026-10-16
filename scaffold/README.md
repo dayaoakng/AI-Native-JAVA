@@ -14,14 +14,15 @@ scaffold/
     └── demo-partner/               # 示例模块：Partner 完整用例
         ├── interfaces/             # controller / request / response
         ├── application/            # handler / assembler / listener（事件监听）
-        ├── domain/                 # entity / valueobject / repository / event
-        ├── infrastructure/         # mapper / persistence/repository
+        ├── domain/                 # entity / valueobject / repository / event / port
+        ├── infrastructure/         # mapper / persistence/repository / port
         └── src/test/groovy/        # Spock 单元测试
 ```
 
 > 本目录自带 `AGENTS.md`（DDD Lite 规则），AI 编程助手复制后自动生效。
-> 跨模块协作示例：`ActivatePartnerHandler` 发布 `PartnerStatusChangedEvent`，
-> `PartnerStatusListener` 用 `@EventListener` 消费（支柱 4：跨模块走事件）。
+> 跨模块协作两个示例：
+> ① 异步事件：`ActivatePartnerHandler` 发布 `PartnerStatusChangedEvent`，`PartnerStatusListener` 用 `@EventListener` 消费；
+> ② 同步 Port：`PartnerCreditPort`（domain 契约）+ `PartnerCreditPortImpl`（infrastructure 实现），Handler 经 Port 跨模块查询。
 
 ## 技术栈（与 BOSS 对齐）
 
